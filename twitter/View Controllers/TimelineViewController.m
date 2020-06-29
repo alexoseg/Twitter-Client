@@ -63,6 +63,11 @@
     cell.screenNameLabel.text = tweet.user.screenName;
     cell.dateLabel.text = tweet.createdAtString;
     cell.tweetTextLabel.text = tweet.text;
+    cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+    cell.favLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount]; 
+    
+    cell.profileImage.image = nil;
+    [cell.profileImage setImageWithURL:tweet.user.profileImageURL];
     
     
     return cell;
