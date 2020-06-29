@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Tweet : NSObject
 
+// MARK: Properties
 @property (nonatomic, strong) NSString *idStr; // For favoriting, retweeting & replying
 @property (nonatomic, strong) NSString *text; // Text content of tweet
 @property (nonatomic) int favoriteCount; // Update favorite count label
@@ -22,10 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) User *user; // Contains Tweet author's name, screenname, etc.
 @property (nonatomic, strong) NSString *createdAtString; // Display date
 
+// For Retweets
 @property (nonatomic, strong) User *retweetedByUser;  // user who retweeted if tweet is retweet
 
--(instancetype)initWithDictionary:(NSDictionary *)dictionary;
-+(NSMutableArray *)tweetsWithArray: (NSArray *)dictionaries;
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
++ (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
 
 @end
 
