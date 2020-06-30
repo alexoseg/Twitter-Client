@@ -71,7 +71,7 @@
     }
     
     cell.nameLabel.text = tweet.user.name;
-    cell.screenNameLabel.text = tweet.user.screenName;
+    cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
     cell.dateLabel.text = tweet.createdAtString;
     cell.tweetTextLabel.text = tweet.text;
     cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
@@ -96,7 +96,8 @@
 
 - (IBAction)onLogoutTap:(id)sender {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        
+    
+    //Main was instantiated programatically in AppDelegate which is why we can access it like this
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     appDelegate.window.rootViewController = loginViewController;
