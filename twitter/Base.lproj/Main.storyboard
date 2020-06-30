@@ -156,11 +156,19 @@
                                                     <rect key="frame" x="160" y="119" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" backgroundImage="favor-icon"/>
+                                                    <state key="selected" backgroundImage="favor-icon-red"/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="nbQ-CH-yQa" eventType="touchUpInside" id="DR4-e0-tUU"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVg-NL-dUf">
                                                     <rect key="frame" x="73" y="119" width="30" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" backgroundImage="retweet-icon"/>
+                                                    <state key="selected" backgroundImage="retweet-icon-green"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="nbQ-CH-yQa" eventType="touchUpInside" id="xLX-O8-RPT"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Il3-em-vzp">
                                                     <rect key="frame" x="111" y="127" width="15" height="17"/>
@@ -180,9 +188,11 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="dateLabel" destination="TVq-Xu-U6u" id="LiM-8g-7Uq"/>
+                                            <outlet property="favButton" destination="xIc-Ww-jo1" id="WiL-Re-vnl"/>
                                             <outlet property="favLabel" destination="KCS-sa-AQn" id="pGg-Jy-hjG"/>
                                             <outlet property="nameLabel" destination="Yw5-BY-s2m" id="7B5-ev-9Vk"/>
                                             <outlet property="profileImage" destination="TUd-mM-DGp" id="aKU-Q4-KLN"/>
+                                            <outlet property="retweetButton" destination="jVg-NL-dUf" id="g3T-PB-xHB"/>
                                             <outlet property="retweetLabel" destination="Il3-em-vzp" id="D70-gB-0Fj"/>
                                             <outlet property="screenNameLabel" destination="4Dd-k7-wYN" id="8tU-pw-fhw"/>
                                             <outlet property="tweetTextLabel" destination="bkm-5z-Ziw" id="01s-MW-uxW"/>
@@ -251,6 +261,8 @@
         <image name="close-icon" width="26" height="24"/>
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
+        <image name="favor-icon-red" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
 </document>
