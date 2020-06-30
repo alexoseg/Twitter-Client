@@ -7,6 +7,7 @@
 //
 
 #import "ComposeViewController.h"
+#import "APIManager.h"
 
 @interface ComposeViewController ()
 @property (weak, nonatomic) IBOutlet UITextView *composeTextView;
@@ -23,9 +24,23 @@
 }
 
 - (IBAction)tweetMessage:(id)sender {
+    
+    NSString *composedText = [NSString stringWithString:self.composeTextView.text];
+    
+    typeof(self) __weak weakSelf = self;
+    [[APIManager shared] postStatusWithText:composedText completion:^(Tweet *tweet, NSError *error) {
+        if(error){
+            NSLog(@"Error composing Tweet: %@", error.localizedDescription);
+        }
+        else {
+            [self.delegate didTweet:tweet];
+            [weakSelf dismissViewControllerAnimated:YES completion:nil];
+        }
+    }];
 }
 
 - (IBAction)cancelMessage:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /*
