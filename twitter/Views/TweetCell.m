@@ -9,12 +9,12 @@
 #import "TweetCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "APIManager.h"
+#import "DateTools.h"
 
 @implementation TweetCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,7 +26,7 @@
 -(void)refreshData{
     self.nameLabel.text = self.tweet.user.name;
     self.screenNameLabel.text = self.tweet.user.screenName;
-    self.dateLabel.text = self.tweet.createdAtString;
+    self.dateLabel.text = [NSDate shortTimeAgoSinceDate:self.tweet.createdAtDate];
     self.tweetTextLabel.text = self.tweet.text;
     self.retweetLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     self.favLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];

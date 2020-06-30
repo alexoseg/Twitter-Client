@@ -14,6 +14,7 @@
 #import "ComposeViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "DateTools.h"
 
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -72,14 +73,13 @@
     
     cell.nameLabel.text = tweet.user.name;
     cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-    cell.dateLabel.text = tweet.createdAtString;
+    cell.dateLabel.text = [NSDate shortTimeAgoSinceDate:tweet.createdAtDate];
     cell.tweetTextLabel.text = tweet.text;
     cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
     cell.favLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
     
     cell.profileImage.image = nil;
     [cell.profileImage setImageWithURL:tweet.user.profileImageURL];
-    
     
     return cell;
 }
