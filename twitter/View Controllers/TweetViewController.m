@@ -21,30 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     
-    [self setupTweetView];
-}
-
-- (void)setupTweetView {
     self.tweetView.tweet = self.tweet;
-    
-    if(self.tweet.favorited){
-        self.tweetView.favButton.selected = YES;
-    }
-    if(self.tweet.retweeted){
-        self.tweetView.retweetButton.selected = YES;
-    }
-    
-    self.tweetView.nameLabel.text = self.tweet.user.name;
-    self.tweetView.screenNameLabel.text = [NSString stringWithFormat:@"@%@",self.tweet.user.screenName];
-    self.tweetView.tweetTextLabel.text = self.tweet.text;
-    self.tweetView.retweetCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
-    self.tweetView.favCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
-    
-    self.tweetView.dateLabel.text = [self.tweet.createdAtDate formattedDateWithFormat:@"d MMM yy"];
-    self.tweetView.timeLabel.text = [self.tweet.createdAtDate formattedDateWithFormat:@"hh:mm a"];
-    
-    [self.tweetView.profileImage setImageWithURL:self.tweet.user.profileImageURL];
 }
 
 - (IBAction)dismissTweet:(id)sender {

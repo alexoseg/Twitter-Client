@@ -20,6 +20,28 @@
     // Drawing code
 }
 */
+-(void)setTweet:(Tweet *)tweet{
+    _tweet = tweet;
+    
+    if(self.tweet.favorited){
+        self.favButton.selected = YES;
+    }
+       if(self.tweet.retweeted){
+           self.retweetButton.selected = YES;
+       }
+       
+       self.nameLabel.text = self.tweet.user.name;
+       self.screenNameLabel.text = [NSString stringWithFormat:@"@%@",self.tweet.user.screenName];
+       self.tweetTextLabel.text = self.tweet.text;
+       self.retweetCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
+       self.favCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
+       
+       self.dateLabel.text = [self.tweet.createdAtDate formattedDateWithFormat:@"d MMM yy"];
+       self.timeLabel.text = [self.tweet.createdAtDate formattedDateWithFormat:@"hh:mm a"];
+       
+       [self.profileImage setImageWithURL:self.tweet.user.profileImageURL];
+}
+
 -(void)refreshData{
     self.nameLabel.text = self.tweet.user.name;
     self.screenNameLabel.text = self.tweet.user.screenName;
