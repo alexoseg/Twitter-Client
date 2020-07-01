@@ -290,7 +290,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TS-sz-VnQ" userLabel="contentView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="220" translatesAutoresizingMaskIntoConstraints="NO" id="DeB-fL-ibj" userLabel="TweetView">
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="220" translatesAutoresizingMaskIntoConstraints="NO" id="DeB-fL-ibj" userLabel="TweetView" customClass="TweetView">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="229"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tWX-Xj-27C">
@@ -312,7 +312,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awA-gF-p3w">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awA-gF-p3w">
                                                         <rect key="frame" x="15" y="73" width="384" height="23"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                         <nil key="textColor"/>
@@ -427,6 +427,18 @@
                                                     <constraint firstItem="Adb-d9-IGB" firstAttribute="leading" secondItem="tWX-Xj-27C" secondAttribute="leading" id="vVu-cA-81S"/>
                                                     <constraint firstItem="Teh-e7-Wmv" firstAttribute="leading" secondItem="K42-BX-kS4" secondAttribute="trailing" constant="12" id="yOr-Zt-OTC"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="dateLabel" destination="Teh-e7-Wmv" id="4tH-KT-eh0"/>
+                                                    <outlet property="favButton" destination="DVt-Ny-Vb5" id="W9w-AW-iMQ"/>
+                                                    <outlet property="favCountLabel" destination="Iwk-0F-aom" id="3c7-wz-U54"/>
+                                                    <outlet property="nameLabel" destination="c1L-On-4xh" id="1cL-lw-d8i"/>
+                                                    <outlet property="profileImage" destination="tWX-Xj-27C" id="Rgn-Ns-Wct"/>
+                                                    <outlet property="retweetButton" destination="Adb-d9-IGB" id="eSp-HJ-7Xv"/>
+                                                    <outlet property="retweetCountLabel" destination="ueq-wf-fs9" id="CnQ-t4-rx1"/>
+                                                    <outlet property="screenNameLabel" destination="0X8-qN-woC" id="FY5-Ex-IPI"/>
+                                                    <outlet property="timeLabel" destination="K42-BX-kS4" id="21o-B8-Lo2"/>
+                                                    <outlet property="tweetTextLabel" destination="awA-gF-p3w" id="ogL-5H-GVM"/>
+                                                </connections>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -465,6 +477,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tweetView" destination="DeB-fL-ibj" id="5Sy-3l-ctn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUw-3n-sv1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

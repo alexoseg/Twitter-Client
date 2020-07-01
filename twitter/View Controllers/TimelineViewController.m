@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "LoginViewController.h"
 #import "DateTools.h"
+#import "TweetViewController.h"
 
 
 @interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -88,6 +89,11 @@
     return self.tweets.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:true];
+    [tableView reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects: indexPath, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
 - (void)didTweet:(nonnull Tweet *)tweet {
     NSLog(@"Entered did tweet");
     [self.tweets insertObject:tweet atIndex:0];
@@ -112,6 +118,13 @@
         UINavigationController *navigationController = [segue destinationViewController];
         ComposeViewController *composeController = (ComposeViewController *)navigationController.topViewController;
         composeController.delegate = self;
+    }
+    else if([segue.identifier isEqualToString:@"tweetSegue"]){
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Tweet* selectedTweet = self.tweets[indexPath.row];
+        TweetViewController* destinationViewController = [segue destinationViewController];
+        destinationViewController.tweet = selectedTweet;
     }
 }
 
