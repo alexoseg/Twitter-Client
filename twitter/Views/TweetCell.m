@@ -23,6 +23,27 @@
     // Configure the view for the selected state
 }
 
+-(void)setTweet:(Tweet *)tweet{
+    _tweet = tweet;
+    
+    if(self.tweet.favorited){
+           self.favButton.selected = YES;
+       }
+       if(tweet.retweeted){
+           self.retweetButton.selected = YES;
+       }
+       
+       self.nameLabel.text = tweet.user.name;
+       self.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
+       self.dateLabel.text = [NSDate shortTimeAgoSinceDate:tweet.createdAtDate];
+       self.tweetTextLabel.text = tweet.text;
+       self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
+       self.favLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
+       
+       self.profileImage.image = nil;
+       [self.profileImage setImageWithURL:tweet.user.profileImageURL];
+}
+
 -(void)refreshData{
     self.nameLabel.text = self.tweet.user.name;
     self.screenNameLabel.text = self.tweet.user.screenName;

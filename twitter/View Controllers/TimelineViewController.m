@@ -63,24 +63,7 @@
     
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.tweets[indexPath.row];
-    
     cell.tweet = tweet;
-    if(tweet.favorited){
-        cell.favButton.selected = YES;
-    }
-    if(tweet.retweeted){
-        cell.retweetButton.selected = YES; 
-    }
-    
-    cell.nameLabel.text = tweet.user.name;
-    cell.screenNameLabel.text = [NSString stringWithFormat:@"@%@", tweet.user.screenName];
-    cell.dateLabel.text = [NSDate shortTimeAgoSinceDate:tweet.createdAtDate];
-    cell.tweetTextLabel.text = tweet.text;
-    cell.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
-    cell.favLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];
-    
-    cell.profileImage.image = nil;
-    [cell.profileImage setImageWithURL:tweet.user.profileImageURL];
     
     return cell;
 }
