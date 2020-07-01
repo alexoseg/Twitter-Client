@@ -26,6 +26,8 @@
 }
 
 - (void)setupTweetView {
+    self.tweetView.tweet = self.tweet;
+    
     if(self.tweet.favorited){
         self.tweetView.favButton.selected = YES;
     }

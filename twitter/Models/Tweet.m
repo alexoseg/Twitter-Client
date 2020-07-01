@@ -23,8 +23,8 @@
             // Change tweet to original tweet
             dictionary = originalTweet;
         }
+        
         self.idStr = dictionary[@"id_str"];
-//        self.text = dictionary[@"text"];
         self.text = dictionary[@"full_text"];
         self.favoriteCount = [dictionary[@"favorite_count"] intValue];
         self.favorited = [dictionary[@"favorited"] boolValue];

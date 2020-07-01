@@ -93,10 +93,10 @@ static NSString * const consumerSecret = @"urOWycaJThsMxfkLCbPW6P5kcK0EDNcKXLZO6
     
     switch (tweetCellaction) {
         case Favorite:
-            urlString = @"1.1/favorites/create.json";
+            urlString = @"1.1/favorites/create.json?tweet_mode=extended";
             break;
         case UnFavorite:
-            urlString = @"1.1/favorites/destroy.json";
+            urlString = @"1.1/favorites/destroy.json?tweet_mode=extended";
             break;
     }
     
@@ -109,25 +109,35 @@ static NSString * const consumerSecret = @"urOWycaJThsMxfkLCbPW6P5kcK0EDNcKXLZO6
 }
 
 -(void)performRetweetActionOn:(Tweet *)tweet withAction:(TweetCellRetweetActions)tweetCellAction completion:(void (^)(Tweet *, NSError *))completion{
-    NSString *idURLString = [NSString stringWithFormat:@"%@.json", tweet.idStr];
-    NSString *urlString;
     
-    switch(tweetCellAction){
-        case Retweet:
-            urlString = [@"1.1/statuses/retweet/" stringByAppendingString:idURLString];
-            break;
-        case UnRetweet:
-            urlString =  [@"1.1/statuses/unretweet/" stringByAppendingString:idURLString];
-            break;
+    if(tweetCellAction == Retweet){
+        NSString *idURLString = [NSString stringWithFormat:@"%@.json?tweet_mode=extended", tweet.idStr];
+        NSString *urlString = [@"1.1/statuses/retweet/" stringByAppendingString:idURLString];
+        [self POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+            completion(tweet, nil);
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            completion(nil, error);
+        }];
     }
     
-    [self POST:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
-        completion(tweet, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        completion(nil, error);
-    }];
-
+    if(tweetCellAction == UnRetweet){
+        NSString *idStr = (tweet.retweetedByUser == nil) ? tweet.idStr : tweet.retweetedByUser.idStr;
+        NSString *urlString = [@"1.1/statuses/show/" stringByAppendingFormat:@"%@.json?include_my_retweet=1", idStr];
+        [self GET:urlString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+            NSString *retweet_id = (NSString *)responseObject[@"current_user_retweet"][@"id_str"];
+            NSString *destroyURLString = [@"1.1/statuses/destroy/" stringByAppendingFormat:@"%@.json?tweet_mode=extended", retweet_id];
+            [self POST:destroyURLString parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                Tweet *tweet = [[Tweet alloc] initWithDictionary:responseObject];
+                completion(tweet, nil);
+            } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                completion(nil, error);
+            }];
+        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+            completion(nil, error);
+        }];
+    }
+    
 }
     
 @end
