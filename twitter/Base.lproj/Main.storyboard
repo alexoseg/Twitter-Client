@@ -405,7 +405,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DVt-Ny-Vb5">
-                                                        <rect key="frame" x="95" y="173" width="40" height="40"/>
+                                                        <rect key="frame" x="95" y="177" width="40" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="2JG-6o-6UB"/>
                                                             <constraint firstAttribute="width" constant="40" id="pg3-Vy-SO5"/>
@@ -415,6 +415,14 @@
                                                         <connections>
                                                             <action selector="didTapFav:" destination="DeB-fL-ibj" eventType="touchUpInside" id="1bn-8D-8yU"/>
                                                         </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-3P-blg">
+                                                        <rect key="frame" x="175" y="177" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="8Xq-Gt-yGa"/>
+                                                            <constraint firstAttribute="height" constant="40" id="V3j-6V-haw"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button" image="reply-icon"/>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -431,7 +439,7 @@
                                                     <constraint firstItem="K42-BX-kS4" firstAttribute="leading" secondItem="tWX-Xj-27C" secondAttribute="leading" id="G3V-jI-4Xz"/>
                                                     <constraint firstItem="c1L-On-4xh" firstAttribute="leading" secondItem="tWX-Xj-27C" secondAttribute="trailing" constant="8" id="HoG-7b-gKA"/>
                                                     <constraint firstItem="c1L-On-4xh" firstAttribute="top" secondItem="tWX-Xj-27C" secondAttribute="top" id="Lh8-Gp-fyD"/>
-                                                    <constraint firstItem="DVt-Ny-Vb5" firstAttribute="top" secondItem="MeE-v4-Gjg" secondAttribute="bottom" constant="7" id="NxM-yG-8o1"/>
+                                                    <constraint firstItem="DVt-Ny-Vb5" firstAttribute="top" secondItem="MeE-v4-Gjg" secondAttribute="bottom" constant="11" id="NxM-yG-8o1"/>
                                                     <constraint firstItem="52d-Dc-8IU" firstAttribute="top" secondItem="K42-BX-kS4" secondAttribute="bottom" constant="8" id="NyA-di-nbr"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0X8-qN-woC" secondAttribute="trailing" constant="15" id="OOd-wq-cZt"/>
                                                     <constraint firstItem="w3K-Rn-BhY" firstAttribute="leading" secondItem="ueq-wf-fs9" secondAttribute="trailing" constant="4" id="OyH-LN-d9G"/>
@@ -449,12 +457,14 @@
                                                     <constraint firstAttribute="trailing" secondItem="52d-Dc-8IU" secondAttribute="trailing" constant="15" id="h7l-E5-cdj"/>
                                                     <constraint firstItem="Iwk-0F-aom" firstAttribute="bottom" secondItem="ueq-wf-fs9" secondAttribute="bottom" id="haB-Do-beB"/>
                                                     <constraint firstItem="52d-Dc-8IU" firstAttribute="leading" secondItem="tWX-Xj-27C" secondAttribute="leading" id="rWF-cz-wVe"/>
+                                                    <constraint firstItem="Rdp-3P-blg" firstAttribute="top" secondItem="MeE-v4-Gjg" secondAttribute="bottom" constant="11" id="rZj-tM-t0x"/>
                                                     <constraint firstItem="Ime-m7-qeQ" firstAttribute="bottom" secondItem="ueq-wf-fs9" secondAttribute="bottom" id="sE3-oN-wWS"/>
                                                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="c1L-On-4xh" secondAttribute="trailing" constant="15" id="sgh-BU-Krg"/>
                                                     <constraint firstItem="awA-gF-p3w" firstAttribute="top" secondItem="tWX-Xj-27C" secondAttribute="bottom" constant="8" id="uEV-Vj-QSj"/>
                                                     <constraint firstAttribute="trailing" secondItem="MeE-v4-Gjg" secondAttribute="trailing" constant="15" id="uXD-9b-itq"/>
                                                     <constraint firstItem="Adb-d9-IGB" firstAttribute="leading" secondItem="tWX-Xj-27C" secondAttribute="leading" id="vVu-cA-81S"/>
                                                     <constraint firstItem="Teh-e7-Wmv" firstAttribute="leading" secondItem="K42-BX-kS4" secondAttribute="trailing" constant="12" id="yOr-Zt-OTC"/>
+                                                    <constraint firstItem="Rdp-3P-blg" firstAttribute="leading" secondItem="DVt-Ny-Vb5" secondAttribute="trailing" constant="40" id="zda-2L-jPS"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="dateLabel" destination="Teh-e7-Wmv" id="4tH-KT-eh0"/>
@@ -512,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eUw-3n-sv1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-442" y="1517"/>
+            <point key="canvasLocation" x="-442.02898550724643" y="1516.7410714285713"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jrH-BE-h9r">
@@ -711,10 +721,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jff-CH-QyC">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Ra-gT-hkR" userLabel="contentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gl3-Rs-OWI">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -855,7 +865,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4Cx-kL-bxo"/>
+        <segue reference="CHf-4w-b5m"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
@@ -866,6 +876,7 @@
         <image name="favor-icon-red" width="30" height="30"/>
         <image name="home-icon" width="30" height="30"/>
         <image name="profile-Icon" width="26" height="26"/>
+        <image name="reply-icon" width="30" height="30"/>
         <image name="retweet-icon" width="30" height="30"/>
         <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
