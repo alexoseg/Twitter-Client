@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
+#import "TTTAttributedLabel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIImageView* profileImage;
 @property (nonatomic, weak) IBOutlet UILabel* nameLabel;
 @property (nonatomic, weak) IBOutlet UILabel* screenNameLabel;
-@property (nonatomic, weak) IBOutlet UILabel* tweetTextLabel;
+@property (nonatomic, weak) IBOutlet TTTAttributedLabel* tweetTextLabel;
 @property (nonatomic, weak) IBOutlet UILabel* timeLabel;
 @property (nonatomic, weak) IBOutlet UILabel* dateLabel;
 @property (nonatomic, weak) IBOutlet UILabel* retweetCountLabel;

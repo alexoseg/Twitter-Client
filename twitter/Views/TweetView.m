@@ -32,6 +32,7 @@
        
        self.nameLabel.text = self.tweet.user.name;
        self.screenNameLabel.text = [NSString stringWithFormat:@"@%@",self.tweet.user.screenName];
+       self.tweetTextLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
        self.tweetTextLabel.text = self.tweet.text;
        self.retweetCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
        self.favCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
@@ -45,7 +46,7 @@
 -(void)refreshData{
     self.nameLabel.text = self.tweet.user.name;
     self.screenNameLabel.text = self.tweet.user.screenName;
-    
+    self.tweetTextLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
     self.tweetTextLabel.text = self.tweet.text;
     self.retweetCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.retweetCount];
     self.favCountLabel.text = [NSString stringWithFormat:@"%d", self.tweet.favoriteCount];
