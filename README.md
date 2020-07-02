@@ -46,8 +46,8 @@ The following **additional** features are implemented:
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
-1.
-2.
+1. GET and POST Requests
+2. The protocol and delegate relationship
 
 ## Video Walkthrough
 
@@ -59,6 +59,9 @@ Here's a walkthrough of implemented user stories:
 
 ### Compose a New Tweet
 <img src='http://g.recordit.co/o6uARWod1p.gif' title='Home Screen Functionality' width=250 alt='Home Screen Functionality' />
+
+### Tweet View
+<img src='http://g.recordit.co/wWOmuyxqxS.gif' title='Home Screen Functionality' width=250 alt='Home Screen Functionality' />
 
 ### User Can Logout
 <img src='http://g.recordit.co/rFEEqMqOZH.gif' title='Home Screen Functionality' width=250 alt='Home Screen Functionality' />
