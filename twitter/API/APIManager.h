@@ -32,5 +32,6 @@ typedef NS_ENUM(NSInteger, TweetCellRetweetActions)
 - (void)performRetweetActionOn:(Tweet *)tweet withAction:(TweetCellRetweetActions)tweetCellAction completion:(void (^)(Tweet *, NSError *))completion;
 
 - (void)getCurrentUserInfoWithCompletion:(void (^)(User *, NSError *))completion;
+- (void)getTweetsAfter:(NSString *)idString withCompletion:(void(^)(NSArray *, NSError *))completion;
 
 @end

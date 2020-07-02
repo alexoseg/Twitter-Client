@@ -19,21 +19,23 @@
 #import "ProfileViewController.h"
 
 
-@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, assign) BOOL isMoreDataLoading;
 
 @end
 
 @implementation TimelineViewController
 
+#pragma mark - SET UP
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchTweets) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
@@ -60,6 +62,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - TABLE VIEW CODE
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
@@ -77,6 +81,37 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:true];
     [tableView reloadRowsAtIndexPaths:[[NSArray alloc] initWithObjects: indexPath, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+#pragma mark - EXTRA FUNCTIONALITY
+
+- (void)loadMoreData{
+    Tweet *lastTweet = self.tweets[self.tweets.count - 1];
+    [[APIManager shared] getTweetsAfter:lastTweet.idStr withCompletion:^(NSArray *tweets, NSError *error) {
+        if(error){
+            NSLog(@"There was an error fetching tweets");
+        }
+        else {
+            [self.tweets addObjectsFromArray:tweets];
+            self.isMoreDataLoading = NO;
+            [self.tableView reloadData];
+        }
+    }];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if(!self.isMoreDataLoading){
+        // Calculate the position of one screen length before the bottom of the results
+        int scrollViewContentHeight = self.tableView.contentSize.height; //Total content in the scroll view
+        int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height; // bounds size gives us the page size
+        
+        // When the user has scrolled pas the threshold, start requesting
+        // contentOffset tells us how far down we have scrolled
+        if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging){
+            self.isMoreDataLoading = true;
+            [self loadMoreData];
+        }
+    }
 }
 
 - (void)didTweet:(nonnull Tweet *)tweet {
