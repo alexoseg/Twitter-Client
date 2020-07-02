@@ -44,7 +44,7 @@
        self.dateLabel.text = [NSDate shortTimeAgoSinceDate:tweet.createdAtDate];
     
        self.tweetTextLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
-       self.tweetTextLabel.text = tweet.text;
+       self.tweetTextLabel.text = (tweet.text) ? tweet.text : tweet.messageText;
     
        self.retweetLabel.text = [NSString stringWithFormat:@"%d", tweet.retweetCount];
        self.favLabel.text = [NSString stringWithFormat:@"%d", tweet.favoriteCount];

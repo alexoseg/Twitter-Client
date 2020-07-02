@@ -279,11 +279,11 @@
             </objects>
             <point key="canvasLocation" x="-442" y="801"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="WUT-Ke-VeR">
             <objects>
                 <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="FTQ-G1-N2b" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="gdM-Ns-vXH"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home-icon" id="gdM-Ns-vXH"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Szq-mU-lQ8"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytz-Ev-cUB">
@@ -532,11 +532,11 @@
             </objects>
             <point key="canvasLocation" x="-1428" y="1517"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="7Oq-Zg-fjI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="buD-Zb-yWN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="UAo-el-LXA"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile-Icon" id="UAo-el-LXA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="irv-FT-dKK">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -864,6 +864,8 @@
         <image name="edit-icon" width="30" height="27"/>
         <image name="favor-icon" width="30" height="30"/>
         <image name="favor-icon-red" width="30" height="30"/>
+        <image name="home-icon" width="30" height="30"/>
+        <image name="profile-Icon" width="26" height="26"/>
         <image name="retweet-icon" width="30" height="30"/>
         <image name="retweet-icon-green" width="30" height="30"/>
     </resources>
