@@ -29,6 +29,9 @@
 -(void)setTweet:(Tweet *)tweet{
     _tweet = tweet;
     
+    self.favButton.selected = NO;
+    self.retweetButton.selected = NO;
+    
     if(self.tweet.favorited){
            self.favButton.selected = YES;
        }
