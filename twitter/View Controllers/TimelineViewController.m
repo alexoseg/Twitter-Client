@@ -16,9 +16,10 @@
 #import "LoginViewController.h"
 #import "DateTools.h"
 #import "TweetViewController.h"
+#import "ProfileViewController.h"
 
 
-@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface TimelineViewController () <ComposeViewControllerDelegate, UITableViewDataSource, UITableViewDelegate, TweetCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *tweets;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -64,6 +65,7 @@
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.tweets[indexPath.row];
     cell.tweet = tweet;
+    cell.delegate = self;
     
     return cell;
 }
@@ -81,6 +83,10 @@
     NSLog(@"Entered did tweet");
     [self.tweets insertObject:tweet atIndex:0];
     [self.tableView reloadData];
+}
+
+- (void)tweetCell:(nonnull TweetCell *)tweetCell didTap:(nonnull User *)user {
+    [self performSegueWithIdentifier:@"profileSegue" sender:user];
 }
 
 - (IBAction)onLogoutTap:(id)sender {
@@ -108,6 +114,10 @@
         Tweet* selectedTweet = self.tweets[indexPath.row];
         TweetViewController* destinationViewController = [segue destinationViewController];
         destinationViewController.tweet = selectedTweet;
+    }
+    else if([segue.identifier isEqualToString:@"profileSegue"]){
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        profileViewController.user = sender;
     }
 }
 

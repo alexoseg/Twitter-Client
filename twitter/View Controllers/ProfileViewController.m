@@ -25,19 +25,23 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [[APIManager shared] getCurrentUserInfoWithCompletion:^(User *user, NSError *error) {
-        if(error){
-            NSLog(@"%@", [error localizedDescription]);
-        } else {
-            [self setUpProfile:user];
-        }
-    }];
+    if(self.user == nil){
+        [[APIManager shared] getCurrentUserInfoWithCompletion:^(User *user, NSError *error) {
+               if(error){
+                   NSLog(@"%@", [error localizedDescription]);
+               } else {
+                   [self setUpProfile:user];
+               }
+           }];
+    }
+    else {
+        [self setUpProfile:self.user];
+    }
 }
 
 - (void)setUpProfile:(User *)user{
