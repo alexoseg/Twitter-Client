@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "APIManager.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +24,12 @@
         UITabBarController *tabBarController = [storyboard instantiateViewControllerWithIdentifier:@"TweetTabBarController"];
         self.window.rootViewController = tabBarController;
     }
+    
+//    else {
+//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//        LoginViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
+//        self.window.rootViewController = loginViewController;
+//    }
     
     return YES;
 }

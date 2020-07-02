@@ -16,6 +16,14 @@
         self.name = dictionary[@"name"];
         self.screenName = dictionary[@"screen_name"];
         self.idStr = dictionary[@"id_str"];
+        self.followerCount = [dictionary[@"followers_count"] intValue];
+        self.followingCount = [dictionary[@"friends_count"] intValue];
+        self.tweetCount = [dictionary[@"statuses_count"] intValue];
+        
+        self.isDefaultProfile = [dictionary[@"default_profile"] boolValue];
+        
+        NSString *headerURLString = dictionary[@"profile_banner_url"];
+        self.headerImageURL = [NSURL URLWithString:headerURLString];
         
         NSString *urlString = dictionary[@"profile_image_url_https"];
         self.profileImageURL = [NSURL URLWithString:urlString];
