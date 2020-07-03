@@ -23,6 +23,7 @@ static NSString * const consumerSecret = @"urOWycaJThsMxfkLCbPW6P5kcK0EDNcKXLZO6
 + (instancetype)shared {
     static APIManager *sharedManager = nil;
     static dispatch_once_t onceToken;
+    //macro
     dispatch_once(&onceToken, ^{
         sharedManager = [[self alloc] init];
     });

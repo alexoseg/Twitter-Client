@@ -27,8 +27,9 @@
 }
 
 -(void)setTweet:(Tweet *)tweet{
-    _tweet = tweet;
-    
+    _tweet = tweet; //access the actual value
+
+    //initializer you want to do _val because of side effects
     self.favButton.selected = NO;
     self.retweetButton.selected = NO;
     

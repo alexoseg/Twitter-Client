@@ -27,6 +27,8 @@ NS_ASSUME_NONNULL_BEGIN
 // For Retweets
 @property (nonatomic, strong) User *retweetedByUser;  // user who retweeted if tweet is retweet
 
+//Pass in the parameters raw instead of the raw dictionary
+//.h file no longer broken
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries;
 

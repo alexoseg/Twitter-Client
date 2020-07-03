@@ -10,6 +10,8 @@
 
 @implementation Tweet
 
+//Dont have too many andthens
+//Break this into several functions
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
@@ -34,7 +36,7 @@
         
         // TODO: initialize user
         // initialize user
-        NSDictionary *user = dictionary[@"user"];
+        NSDictionary *const user = dictionary[@"user"];
         self.user = [[User alloc] initWithDictionary:user];
 
         // TODO: Format and set createdAtString
@@ -51,7 +53,7 @@
 }
 
 + (NSMutableArray *)tweetsWithArray:(NSArray *)dictionaries{
-    NSMutableArray *tweets = [NSMutableArray array];
+    NSMutableArray *const tweets = [NSMutableArray array];
     for (NSDictionary *dictionary in dictionaries) {
         Tweet *tweet = [[Tweet alloc] initWithDictionary:dictionary];
         [tweets addObject:tweet];

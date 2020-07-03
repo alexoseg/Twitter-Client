@@ -68,6 +68,7 @@
     
     TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TweetCell"];
     Tweet *tweet = self.tweets[indexPath.row];
+    //Properties are wrappers around functions
     cell.tweet = tweet;
     cell.delegate = self;
     
